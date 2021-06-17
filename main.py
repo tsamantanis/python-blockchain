@@ -1,3 +1,7 @@
+import hashlib
+import json
+from time import time
+
 def __init__(self):
     """Initialize blockchain"""
     self.chain = []
@@ -17,7 +21,7 @@ def valid_proof(last_proof, proof):
    guess = f'{last_proof}{proof}'.encode()
    guess_hash = hashlib.sha256(guess).hexigest()
    return guess_hash[:4] == "0000"
-   
+
 def new_block(self, proof, previous_hash = None):
     """Create new blocks and then add them to existing chain"""
     block = {
@@ -42,7 +46,7 @@ def new_transaction(self):
 
 @staticmethod
 def hash(block):
-    """Hash function for blocks"""\
+    """Hash function for blocks"""
     block_string = json.dumps(block, sort_keys = True).encode()
     return hashlib.sha256(block_string).hexdigest()
 
